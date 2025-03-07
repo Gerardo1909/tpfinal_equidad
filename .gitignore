@@ -46,6 +46,3 @@ MANIFEST
 
 # Archivos de configuración local
 *.env
-
-# Archivos de control de versión
-.gitkeep
