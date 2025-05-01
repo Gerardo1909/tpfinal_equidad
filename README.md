@@ -6,7 +6,7 @@
 * Gianni Bevilacqua - gbevilacqua@estudiantes.unsam.edu.ar
 * Javier Spina - jaspina@estudiantes.unsam.edu.ar
 
-Este proyecto corresponde al trabajo práctico final de la materia **Equidad en Aprendizaje Automático** de la carrera de Ciencia de Datos (1er cuatrimestre 2025). El objetivo principal es evaluar y mitigar sesgos en modelos de clasificación aplicados al dataset **German Credit Data**, con foco en cuestiones de equidad de género en la asignación de créditos.
+Este proyecto corresponde al trabajo práctico final de la materia **Equidad en Aprendizaje Automático** de la Lienciatura en Ciencia de Datos (1er cuatrimestre 2025). El objetivo principal es evaluar y mitigar sesgos en modelos de clasificación aplicados al dataset **German Credit Data**, con foco en cuestiones de equidad de género en la asignación de créditos.
 
 ## 📋 Enunciado del Trabajo
 
@@ -44,10 +44,12 @@ tp_final_fairness_ML/
 │   ├── 04_evaluacion_fairness.ipynb
 │   ├── 05_modelo_mitigado.ipynb
 │   ├── 06_evaluacion_final_fairness.ipynb
-│   └── main.ipynb               # Notebook unificada para entrega
+│   ├── main.ipynb               # Notebook unificada para entrega
+│   └── README.md
 │
 ├── utils/                        # Funciones reutilizables
 │   ├── preprocessing.py
+│   ├── plotting.py
 │   └── __init__.py
 │
 ├── requirements.txt              # Dependencias del proyecto
@@ -61,8 +63,8 @@ tp_final_fairness_ML/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/<usuario>/<repo>.git
-cd tp_final_fairness_ML
+git clone https://github.com/Gerardo1909/tpfinal_equidad.git
+cd tpfinal_equidad
 ```
 
 ### 2. Crear y activar un entorno virtual

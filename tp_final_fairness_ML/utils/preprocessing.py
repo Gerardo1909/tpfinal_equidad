@@ -113,3 +113,13 @@ def convertir_object_a_categ(df: pd.DataFrame) -> pd.DataFrame:
     for col in df.select_dtypes(include=['object']).columns:
         df[col] = df[col].astype('category')
     return df
+
+
+def extraer_genero(df: pd.DataFrame, nombre_nueva_columna: str) -> pd.DataFrame:
+
+    df[nombre_nueva_columna] = None
+
+    df.loc[df['personal_status_sex'].str.contains('male'), nombre_nueva_columna] = 'male'
+    df.loc[df['personal_status_sex'].str.contains('female'), nombre_nueva_columna] = 'female'
+    
+    return df
