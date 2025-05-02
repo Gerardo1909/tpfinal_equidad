@@ -50,6 +50,7 @@ tp_final_fairness_ML/
 ├── utils/                        # Funciones reutilizables
 │   ├── preprocessing.py
 │   ├── plotting.py
+│   ├── models.py
 │   └── __init__.py
 │
 ├── requirements.txt              # Dependencias del proyecto
