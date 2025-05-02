@@ -1,3 +1,7 @@
+'''
+    Este módulo contiene funciones para la generación de gráficos.
+'''
+
 import math
 import matplotlib.pyplot as plt
 import seaborn as sns
