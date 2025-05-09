@@ -1,12 +1,25 @@
 '''
-    Este módulo contiene funciones para el preprocesamiento de datos.
+    Módulo para el preprocesamiento de datos del German Credit Dataset.
+    
+    Este módulo proporciona funciones para limpiar, transformar y preparar
+    los datos del dataset German Credit para análisis de equidad y entrenamiento
+    de modelos de machine learning.
 '''
 
 import pandas as pd
 
-def mapear_german_credit_data(df: pd.DataFrame) -> pd.DataFrame:
 
-    # Armo una lista con los nombres de las columnas según la fuente
+def mapear_german_credit_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Mapea los códigos originales del German Credit Dataset a valores descriptivos.
+    
+    Parameters:
+        df (pd.DataFrame): DataFrame con los datos originales sin nombres de columnas.
+        
+    Returns:
+        pd.DataFrame: DataFrame con nombres de columnas y valores transformados.
+    """
+    # Nombres de las columnas según la documentación del dataset
     nombres_columnas = [
         "checking_account", "duration", "credit_history", "purpose", "credit_amount",
         "savings_account", "employment_since", "installment_rate", "personal_status_sex",
@@ -16,7 +29,7 @@ def mapear_german_credit_data(df: pd.DataFrame) -> pd.DataFrame:
     ]
     df.columns = nombres_columnas
 
-    # Armo un diccionario con los valores de las columnas categóricas según la fuente
+    # Diccionario de mapeo para transformar códigos a valores descriptivos
     mapeos = {
         "checking_account": {
             "A11": "< 0 DM",
@@ -102,24 +115,53 @@ def mapear_german_credit_data(df: pd.DataFrame) -> pd.DataFrame:
         }
     }
 
-    # Aplico los mapeos
+    # Aplico los mapeos de manera eficiente
     for col, mapeo in mapeos.items():
         df[col] = df[col].map(mapeo)
         
     return df
 
-def convertir_object_a_categ(df: pd.DataFrame) -> pd.DataFrame:
 
-    for col in df.select_dtypes(include=['object']).columns:
+def convertir_object_a_categ(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Convierte las columnas de tipo 'object' a tipo 'category' para optimizar memoria
+    y mejorar el rendimiento de operaciones.
+    
+    Parameters:
+        df (pd.DataFrame): DataFrame con columnas a convertir.
+        
+    Returns:
+        pd.DataFrame: DataFrame con las columnas convertidas.
+    """
+    columnas_object = df.select_dtypes(include=['object']).columns
+    for col in columnas_object:
         df[col] = df[col].astype('category')
     return df
 
 
-def extraer_genero(df: pd.DataFrame, nombre_nueva_columna: str) -> pd.DataFrame:
-
+def extraer_genero(df: pd.DataFrame, nombre_nueva_columna: str = 'gender') -> pd.DataFrame:
+    """
+    Extrae el género de la columna 'personal_status_sex' y crea una nueva columna.
+    
+    Parameters:
+        df (pd.DataFrame): DataFrame que contiene la columna 'personal_status_sex'.
+        nombre_nueva_columna (str): Nombre de la columna a crear para almacenar el género.
+            Por defecto es 'gender'.
+        
+    Returns:
+        pd.DataFrame: DataFrame con la nueva columna de género añadida.
+    """
+    # Crear una copia para evitar SettingWithCopyWarning
+    df = df.copy()
+    
+    # Inicializar columna con valores nulos
     df[nombre_nueva_columna] = None
-
-    df.loc[df['personal_status_sex'].str.contains('male'), nombre_nueva_columna] = 'male'
-    df.loc[df['personal_status_sex'].str.contains('female'), nombre_nueva_columna] = 'female'
+    
+    # Extraer género de manera vectorizada
+    mask_male = df['personal_status_sex'].str.contains('male')
+    mask_female = df['personal_status_sex'].str.contains('female')
+    
+    df.loc[mask_male, nombre_nueva_columna] = 'male'
+    df.loc[mask_female, nombre_nueva_columna] = 'female'
     
     return df
