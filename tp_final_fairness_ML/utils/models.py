@@ -21,7 +21,7 @@ def sigmoide(x: np.ndarray) -> np.ndarray:
         np.ndarray: Valores transformados mediante la función sigmoide.
     """
 
-    return 1 / (1 + np.exp(-x))
+    return 1 / (1 + np.exp(-x + 1e-10))  # Evitar overflow numérico
 
 
 def ajustar_regresion_logistica(X: np.ndarray, 
