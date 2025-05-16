@@ -132,7 +132,7 @@ def graficar_matriz_de_confusion_por_genero(dataframes: list[pd.DataFrame],
             ax.axis('off')
             continue
             
-        cm = confusion_matrix(df[y_test_column], df[y_pred_column])
+        cm = confusion_matrix(df[y_test_column], df[y_pred_column], labels=[1, 0])
         
         # Calcular métricas para el título
         tn, fp, fn, tp = cm.ravel()
