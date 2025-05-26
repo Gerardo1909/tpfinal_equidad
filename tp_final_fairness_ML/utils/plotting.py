@@ -10,8 +10,8 @@ import math
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import numpy as np
 from sklearn.metrics import confusion_matrix
+import numpy as np
 
 # Configuraciones para visualización
 plt.style.use('seaborn-v0_8-whitegrid')   
@@ -150,4 +150,18 @@ def graficar_matriz_de_confusion_por_genero(dataframes: list[pd.DataFrame],
         ax.set_yticklabels(labels, rotation=0)
     
     plt.tight_layout(rect=[0, 0, 1, 0.95])  # Ajustar para el título principal
+    plt.show()
+    
+    
+def graficar_matriz_de_confusion(y_test: np.ndarray , y_pred: np.ndarray):
+    
+    cm = confusion_matrix(y_test, y_pred, labels=[1, 0])
+    labels = ['Bajo riesgo (1)', 'Alto riesgo (0)']
+
+    plt.figure(figsize=(10, 6))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=labels, yticklabels=labels)
+    plt.xlabel('Predicción')
+    plt.ylabel('Valor real')
+    plt.title('Matriz de confusión')
+    plt.tight_layout()
     plt.show()

@@ -24,7 +24,7 @@ y_test,y_pred_test,genre
 1,1,male
 1,1,male
 1,1,male
-0,0,male
+0,1,male
 1,1,male
 1,0,male
 1,1,male
@@ -123,7 +123,7 @@ y_test,y_pred_test,genre
 1,1,male
 1,1,male
 1,1,male
-0,0,male
+0,1,male
 0,1,male
 0,0,male
 1,1,female
