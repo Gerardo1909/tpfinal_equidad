@@ -69,7 +69,6 @@ tensorstore==0.1.75
 threadpoolctl==3.6.0
 toolz==1.0.0
 tornado==6.4.2
--e git+https://github.com/Gerardo1909/tpfinal_equidad.git@0246f18bb157b37b42e6dbf26ffcfc6ef107643b#egg=tp_final_fairness_ML
 traitlets==5.14.3
 treescope==0.1.9
 typing_extensions==4.13.2
