@@ -33,25 +33,11 @@ El desarrollo incluye:
 ```
 tp_final_fairness_ML/
 │
-├── data/                          # Archivos de datos
-│   ├── raw/                      # Datos originales sin procesar
-│   └── processed/                # Datos limpios o transformados
-│
-├── notebooks/                    # Notebooks de trabajo modular
-│   ├── 01_preprocesamiento.ipynb
-│   ├── 02_EDA.ipynb
-│   ├── 03_primer_modelo.ipynb
-│   ├── 04_evaluacion_fairness.ipynb
-│   ├── 05_modelo_mitigado.ipynb
-│   ├── 06_evaluacion_final_fairness.ipynb
-│   ├── main.ipynb               # Notebook unificada para entrega
+├── notebooks/                    
+│   ├── german_credit_fairness.ipynb               # Notebook principal que contiene el desarrollo del proyecto
 │   └── README.md
 │
-├── utils/                        # Funciones reutilizables
-│   ├── preprocessing.py
-│   ├── plotting.py
-│   ├── models.py
-│   └── __init__.py
+├── informe_trabajo_practico.pdf                   # Informe en formato PDF con los resultados del proyecto 
 │
 ├── requirements.txt              # Dependencias del proyecto
 ├── setup.py                      # Instalación del proyecto en modo editable
